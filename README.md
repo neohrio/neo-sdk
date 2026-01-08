@@ -4,8 +4,14 @@ SDK for embedding NEO platform in your application via iframe with SSO authentic
 
 ## Installation
 
+### NPM
 ```bash
 npm install @neohr/sdk
+```
+
+### Script Tag (CDN)
+```html
+<script src="https://unpkg.com/@neohr/sdk"></script>
 ```
 
 ## Quick Start
@@ -51,6 +57,28 @@ const sdk = new NeoSDK({
 });
 
 await sdk.init();
+```
+
+## Using via Script Tag
+
+When loaded via `<script>` tag, the SDK is available as `window.NeoSDK`:
+
+```html
+<script src="https://unpkg.com/@neohr/sdk"></script>
+<script>
+  const sdk = new NeoSDK.NeoSDK({
+    neoOrigin: 'https://acme.neohr.io',
+    mintToken: async () => {
+      const res = await fetch('/mint', { method: 'POST' });
+      const { jwt } = await res.json();
+      return jwt;
+    },
+    container: document.getElementById('neo-container'),
+    redirectTo: '/people',
+  });
+
+  sdk.init();
+</script>
 ```
 
 ## Configuration

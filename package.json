@@ -21,6 +21,8 @@
   "files": [
     "dist"
   ],
+  "unpkg": "./dist/index.global.min.js",
+  "jsdelivr": "./dist/index.global.min.js",
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
