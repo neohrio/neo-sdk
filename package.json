@@ -1,6 +1,6 @@
 {
   "name": "@neohr/sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "SDK for embedding NEO platform in your application",
   "type": "module",
   "main": "./dist/index.cjs",
