@@ -34,6 +34,7 @@ const sdk = await createNeoSDK({
     error: (err) => console.error('Error:', err),
     backdropVisible: () => console.log('Modal/drawer opened'),
     backdropHidden: () => console.log('Modal/drawer closed'),
+    routeChange: (path) => console.log('Path:', path),
   },
 });
 ```
@@ -102,6 +103,7 @@ When loaded via `<script>` tag, the SDK is available as `window.NeoSDK`:
 | `tokenExpiring` | Fired when token is about to expire (SDK handles refresh automatically) |
 | `backdropVisible` | Fired when a modal/drawer opens in NEO |
 | `backdropHidden` | Fired when a modal/drawer closes in NEO |
+| `routeChange` | Fired when a route changes in NEO |
 
 ## Methods
 

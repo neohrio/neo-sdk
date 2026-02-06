@@ -65,6 +65,13 @@ export class NeoSDK {
         await this.handleTokenExpired();
         break;
 
+      case 'neo_provisioning_conflict_error':
+        this.handleError({
+          type: 'provisioning_conflict_error',
+          message: 'Failed to provision user',
+        });
+        break;
+
       case 'neo_exchange_token_error':
         this.handleError({
           type: 'token_exchange_error',
@@ -78,6 +85,10 @@ export class NeoSDK {
 
       case 'neo_backdrop_hidden':
         this.config.on?.backdropHidden?.();
+        break;
+
+      case 'neo_route_change':
+        this.config.on?.routeChange?.(data.path);
         break;
     }
   }

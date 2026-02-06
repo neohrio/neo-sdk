@@ -67,13 +67,18 @@ export interface NeoSDKEventHandlers {
    * Called when a modal or drawer is hidden in NEO
    */
   backdropHidden?: () => void;
+
+  /**
+   * Called when the route changes in NEO
+   */
+  routeChange?: (path: string) => void;
 }
 
 /**
  * Error object for NEO SDK errors
  */
 export interface NeoError {
-  type: 'token_exchange_error' | 'mint_error' | 'unknown';
+  type: 'token_exchange_error' | 'mint_error' | 'provisioning_conflict_error' | 'unknown';
   message: string;
 }
 
@@ -83,9 +88,11 @@ export interface NeoError {
 export type NeoToHostMessage =
   | { type: 'neo_embed_ready' }
   | { type: 'neo_token_expired' }
+  | { type: 'neo_provisioning_conflict_error' }
   | { type: 'neo_exchange_token_error' }
   | { type: 'neo_backdrop_visible' }
-  | { type: 'neo_backdrop_hidden' };
+  | { type: 'neo_backdrop_hidden' }
+  | { type: 'neo_route_change', path: string}
 
 /**
  * Message types sent from Host to NEO
