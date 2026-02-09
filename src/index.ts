@@ -45,6 +45,16 @@ export class NeoSDK {
     this.iframe.src = `${this.config.neoOrigin}/organization/embed/boot`;
   }
 
+  /**
+   * Navigate to a path in the NEO platform
+   */
+  navigate(path: string): void {
+    this.iframe.contentWindow?.postMessage({
+      type: 'neo_navigate',
+      path,
+    }, this.config.neoOrigin);
+  }
+
   private async handleMessage(event: MessageEvent): Promise<void> {
     if (event.origin !== this.config.neoOrigin) {
       return;
