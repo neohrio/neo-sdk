@@ -113,7 +113,7 @@ Initializes the SDK and starts the authentication flow.
 ### `sdk.getIframe()`
 Returns the iframe element.
 
-### `sdk.navigate(path: string)
+### `sdk.navigate(path: string)`
 Navigate to a path in the NEO platform
 
 ### `sdk.destroy(removeIframe?: boolean)`
